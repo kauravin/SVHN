@@ -1,6 +1,5 @@
 import h5py
 import time
-from numba import jit
 class DigitStructWrapper:
     """
     Wrapper for the H5PY digitStruct files from the SVHN dataset
