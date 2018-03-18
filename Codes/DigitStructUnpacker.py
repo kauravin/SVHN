@@ -1,5 +1,6 @@
 import h5py
 import time
+from numba import jit
 class DigitStructWrapper:
     """
     Wrapper for the H5PY digitStruct files from the SVHN dataset
@@ -53,12 +54,14 @@ class DigitStructWrapper:
         packFilenameNdBbox['filename']=self.get_name(n)
         #print(packFilenameNdBbox)
         return packFilenameNdBbox
+    
     def unpack(self):
         """
         This function returns list of all the dictionaries containing the information of individual Filenames and Bboxes
         """
         print("inside the unpack function")
-        return ([self.get_item(i) for i in range (100)])
+        return ([self.get_item(i) for i in range (len(self.digitStructName))])
+   
     def unpack_all(self):
         """
         This function returns the array of dictionaries of each input image...kind of unpacking the whole input provide
